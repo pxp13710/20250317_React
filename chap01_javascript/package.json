@@ -1,4 +1,18 @@
 {
+  "name": "chap01",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "jquery",
+    "react"
+  ],
+  "author": "놀부",
+  "license": "MIT",
+  "description": "",
   "dependencies": {
     "bootstrap": "^5.3.3",
     "jquery": "^3.7.1"

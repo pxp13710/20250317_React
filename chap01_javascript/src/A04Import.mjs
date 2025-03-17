@@ -18,6 +18,9 @@ import two, { x, y } from './A04ExportTwo.js';
 // console.log(one);
 // console.log(two);
 
+// 외부라이브러리
+// import $ from 'jquery';
+
 /*
   || 연산자
   x의 값이 ''(빈문자열), 0, NaN, undefined, null, false가 아니면 x값 그대로 사용
