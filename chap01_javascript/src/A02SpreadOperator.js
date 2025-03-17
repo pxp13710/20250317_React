@@ -55,13 +55,35 @@ const objOne = {
   name: 'NolBu',
 };
 
+// const five = ...objOne;    // const five = id: 1, name: 'NolBu',
+const five = { ...objOne }; // const five = { id: 1, name: 'NolBu', }
+console.log(objOne === five); // false
+
+// 추가 - 동일한 key 이름이 없으면 추가
+const six = { ...objOne, address: 'Seoul' };
+console.log(six);
+
+// 변경 - 동일한 key 이름이 있으면 덮어씀(변경)
+const seven = { ...objOne, name: '흥부' };
+console.log(seven);
+console.log(objOne);
+console.log('');
+
+// 삭제
+delete six.address;
+const newSix = { ...six };
+console.log('');
+
 const objTwo = {
   id: 2,
   address: 'Seoul',
+  ...objOne, // { id: 1, name: 'NolBu', }
 };
 console.log(objTwo);
 
+// 기존 값 유지
 const objThree = {
+  ...objOne, // { id: 1, name: 'NolBu', }
   id: 3,
   address: 'InChen',
 };
