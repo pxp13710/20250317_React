@@ -1,0 +1,56 @@
+Proxy
+
+1. 설치
+  npm i http-proxy-middleware
+
+
+2. "src 폴더"에 setupProxy.js 파일 생성
+
+  // setupProxy.js
+  const { createProxyMiddleware } = require('http-proxy-middleware');
+
+  module.exports = function (app) {
+    app.use(
+      '/api',                             //proxy가 필요한 path prameter를 입력.
+      createProxyMiddleware({
+        target: 'http://localhost:8000',  //타겟이 되는 api url를 입력.
+        changeOrigin: true,               //대상 서버 구성에 따라 호스트 헤더가 변경되도록 설정하는 부분.
+      })
+    );
+
+    // 여러 도메인 사용하는 경우
+    app.use(
+      '/api2',
+      createProxyMiddleware({
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      })
+    );
+  };
+
+
+3. .env 파일 변경
+  REACT_APP_BASEURL=/api/contacts
+  REACT_APP_BASELONG=/api/contacts_long
+
+
+4. 사용
+  import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+  import axios from 'axios';
+
+  const baseURL = process.env.REACT_APP_BASEURL;
+  const baseLONG = process.env.REACT_APP_BASELONG;
+
+  // Action
+  export const getContactListAction = createAsyncThunk('CONTACT/GETCONTACTLIST', async (data, { rejectWithValue }) => {
+    try {
+      const resp = await axios.get(baseLONG, { params: { pageno: data.no, pagesize: data.size } });
+      return resp.data;
+    } catch (error) {
+      return rejectWithValue(error)
+    }
+  });
+  export const getContactAction = createAsyncThunk('CONTACT/GETCONTACT', async (no) => {
+    const resp = await axios.get(baseURL + no);
+    return resp.data;
+  });

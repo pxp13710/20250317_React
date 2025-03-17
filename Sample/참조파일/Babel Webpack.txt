@@ -1,0 +1,43 @@
+Webpack 설정
+  1. 설정 파일 작성
+    npx create-new-webpack-app ./my-app --template=default
+
+    지원 템플릿
+    default: 기본 설정을 갖춘 템플릿
+    react: React 설정을 포함한 템플릿
+    vue: Vue 설정을 포함한 템플릿
+
+
+    추가 모듈 설치가 필요하다는 메시지가 출력되면 설치한다.
+    
+    1. Which of the following JS solutions do you want to use? (Use arrow keys)
+      어떤 솔루션을 사용할 것인가?                                            [ ES6 ]
+
+    2. Do you want to use webpack-dev-server? (Y/n)
+      개발 서버를 사용할 것인가? (live-server와 같은 환경을 구축해 줄까)        [ Y ]
+
+    3. Do you want to simplify the creation of HTML files for your bundle? (Y/n)
+      간단한 번들용 HTML 파일을 생성할 것인가?                                 [ Y ]
+
+    4. Do you want to add PWA support? (Y/n)
+      PWA 지원을 추가 할 것인가?                                              [ N ]
+
+    5. Which of the following CSS solutions do you want to use? (Use arrow keys)
+      어떤 CSS 솔루션을 사용할 것인가?                                        [ CSS Only ]
+
+    6. Will you be using PostCSS in your project? (Y/n)
+      프로젝트에서 PostCSS를 사용할 예정인가?                                 [ N ]
+
+    7. Do you want to extract CSS for every file? (Use arrow keys)
+      모든 파일에서 CSS를 추출할 것인가(별로 파일로 추출할 것인가)?             [ Y ]
+
+    8. Do you like to install prettier to format generated configuration? (Y/n)
+      생성된 구성 포맷을 위해 Prettier를 설치할 것인가?                       [ Y ]
+
+    9. Pick a package manager: (Use arrow keys)
+      패키지 관리자 선택                                                    [ NPM ]
+
+
+  package.json 파일의 script 항목에 실행 명령이 존재한다
+    실행
+      npm run serve

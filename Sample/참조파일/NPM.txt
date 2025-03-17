@@ -1,0 +1,129 @@
+npm 명령 간략 설명
+
+  1. 버전 확인
+    npm -v
+
+  2. 검색
+    npmjs.com에서 검색하는 것이 보기 좋다.
+
+    npm search moduleName
+    ex] npm search jquery
+
+  3. 상세 정보
+    npm info(view) moduleName
+    ex] npm info jquery
+  
+  4. version 정보
+    npm info(view) moduleName version
+    npm info(view) moduleName versions
+
+    ex] 
+      npm info jquery version                 최신 버전 출력
+      npm info jquery versions                모든 버전 목록을 출력
+
+  5. 기본 설치
+    로컬 설치. 설치된 폴더와 하위 폴더에서만 사용 가능
+      npm install moduleName --save           npm 5 이하 버전에서 사용
+      npm i moduleName
+        설치한 모듈은 설치 경로 내부에 node_modules라는 폴더에 설치되며 해당 경로 하위에서만 호출할 수 있다
+
+      ex]
+        npm i jquery
+        npm i jquery bootstrap
+
+  6. 버전 지정해서 설치
+    npm i moduleName@4      => 4의 마지막 버전
+    ex] npm i bootstrap@4
+    
+    alpha, beta, rc 버전은 이름이 마지막까지 매칭되어야 설치된다
+    ex] npm i bootstrap@5.3.0-alpha3
+      
+
+  7. 프로젝트 진행과 상관 없는 모듈 설치
+    npm install moduleName --save-dev       npm 5 이하 버전에서 사용
+    npm i -D moduleName
+      프로젝트 작성과는 상관없는 모듈을 설치하는 경우 (프로젝트 작성과는 상관 없는 모듈)
+      즉 test에 관련된 module(mocha), 문법 체크 module(eslint), 파일 포멧 module(prettier)
+
+    ex] npm i -D eslint
+
+  8. Global 설치. 컴 어느 위치에서도 사용 가능한 형태가 된다
+    npm install -g moduleName               npm 5 이하 버전에서 사용
+    npm i -g moduleName
+      설치한 모듈을 OS 어느 경로에서든지 호출할 수 있다
+
+    ex] npm i -g create-react-app
+
+  9. 삭제
+    npm un -g moduleName        npm uninstall -g moduleName
+    npm un moduleName           npm uninstall moduleName
+
+    ex] npm un bootstrap
+
+  10. 설치 모듈 정보
+    npm ls
+    npm ls -g
+
+  11. cache 삭제
+    npm cache clean --force   삭제
+    npm run rebuild           npm을 재 설치
+    
+
+  12. 그외
+    npm prune                 package.json 내에 정의 되지 않은 패키지 삭제
+    npm update                npm 모듈 업데이트
+    npm root                  node_modules의 위치
+    npm dedupe                npm의 중복된 패키지들을 정리
+    npm outdated              오래된 패키지 검색
+
+
+
+프로젝트 생성
+  1. 작업하기 전에 설치할 모듈을 관리하는 파일부터 작성한다.
+    npm init
+
+      package name: (chap01_javascript)   => 프로젝트 명 (대문자는 사용 불가)
+      version: (1.0.0)                    => 프로젝트 버전
+      description:                        => 프로젝트 설명
+      entry point: (index.js)             => 어느 파일 기준으로 실행 할 것인가
+      test command:                       => Local에 설치된 모듈을 실행할 명령을 기술
+      git repository:                     => git address
+      keywords:                           => npm search로 검색될 단어
+      author:                             => 작성자
+      license: (ISC)                      => 저작권 관련
+
+
+  2. npm init -y                           => 위의 설정을 기본값으로 자동 작성
+
+
+  3. 필요한 모듈 설치 
+    필요한 모듈을 위에서 학습한 형태로 i 또는 i -D 형태로 설치
+
+  4. 설치 후 node_modules가 설치 안되었거나 누락된 모듈이 있는 경우
+
+    npm i   or      npm install
+    package.json의 dependencies와 devDependencies를 재 설치해 준다
+
+    npm i --only=prod           dependencies만 설치
+    npm i --only=dev            devDependencies만 설치
+    
+
+
+실행 명령 등록
+
+  1. 작성한 package의 scripts에 실행할 명령을 추가한다. 
+    추가 방법은 중복되지 않은 key 이름으로 command에 기술한 명령에서 npx를 제외한 명령만을 기술한다.
+
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "babel src -d dist"
+    },
+
+
+  2. 명령의 실행
+    npm run test
+    npm run build
+
+    start, test 명령은 run을 생략하고 다음 명령으로 실행 가능
+      npm start
+

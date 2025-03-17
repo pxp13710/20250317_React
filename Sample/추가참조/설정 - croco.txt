@@ -1,0 +1,59 @@
+절대패스 설정
+
+1. 설치
+  npm i -D react-app-alias
+  npm i @craco/craco
+
+
+2. 설정 파일 작성
+  2-1. jsconfig.paths.json 파일 생성
+
+    {
+      "compilerOptions": {
+        "baseUrl": "src",
+        "paths": {
+          "@css": ["src/css/*"],
+          "@components": ["src/components/*"],
+          "@pages": ["src/pages/*"],
+          "@stores": ["src/stores/*"]
+        }
+      }
+    }
+
+  2-2. jsconfig.json 파일 작성
+      
+    {
+      "extends": "./jsconfig.paths.json",
+      "compilerOptions": {}
+    }
+
+  2-3. craco.config.js 파일 작성
+    const { CracoAliasPlugin } = require('react-app-alias');
+
+    module.exports = {
+      plugins: [
+        {
+          plugin: CracoAliasPlugin,
+          options: {
+            baseUrl: '.',
+            source: 'jsconfig',
+            jsConfigPath: './jsconfig.paths.json',
+          },
+        },
+      ],
+    };
+
+
+3. package.json 변경
+
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+
+
+4. 프로젝트 새로 시작
+
+.env 파일을 변경한 경우도 프로젝트 재 시작 해야 한다

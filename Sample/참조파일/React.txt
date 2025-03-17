@@ -1,0 +1,36 @@
+React 설치
+
+  1. 확인
+    npm info create-react-app
+
+  2. 설치
+    리엑트 프로젝트를 생성하는 보일러 플레이트 설치
+    어느 경로에서든지 프로젝트를 생성할 수 있도록 글로벌에 설치한다
+
+    npm i -g create-react-app
+    or
+    설치 없이 바로 아래의 프로젝트를 생성할 수도 있다
+    npx create-react-app 프로젝트 이름
+
+    설치 버전 확인
+      create-react-app --version
+
+  3. 프로젝트 생성    
+    create-react-app 프로젝트이름
+    create-react-app 프로젝트이름 --template typescript
+      
+  4. 프로젝트로 진입
+    cd 프로젝트이름
+      
+  5. 프로젝트 시작
+    npm start
+
+  6. 프로젝트 종료
+    ctrl + c
+
+  7. 수업 예제는 bootstrap으로 작성되어 있어 bootstrap을 기본 template5에 먼저 설치
+    npm i bootstrap
+
+
+  파일 정렬
+    Alt + Shift + F

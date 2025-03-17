@@ -1,0 +1,77 @@
+1. 강사
+  신성진
+  pxp13716@gmail.com
+
+2. 공유
+  
+  
+
+3. 참조 사이트
+  Node                https://nodejs.org/ko/
+  VSCode              https://code.visualstudio.com/
+
+  JavaScript          https://developer.mozilla.org/ko/docs/Web/JavaScript
+  TypeScript          https://www.typescriptlang.org/ko/
+
+  babel               https://babeljs.io/
+  webpack             https://webpack.kr/
+  Vite                https://ko.vitejs.dev/guide/
+
+  Axios               https://yamoo9.github.io/axios/
+
+  NPM:                https://www.npmjs.com/
+
+  CDN                 https://cdnjs.com/                 
+                      https://www.jsdelivr.com/
+                      https://www.unpkg.com/
+
+  React               https://ko.legacy.reactjs.org/
+  Redux               https://ko.redux.js.org/introduction/getting-started
+      
+
+4. VSCode 기본 설정 - File - Preferences - settings
+  1. Auto Save
+    => onFocusChange
+  2. Tab Size
+    => 2
+  3. Default Formatter ( 검색창에 formatter로 검색)
+    => TypeScript And JavaScript...
+    => Prettier 플러그인 설치 후는 pretter로 설정
+  4. Format on Save
+    => check
+  5. Compact Folders
+    => check 해제
+
+
+5. 자주 사용하는 명령 단축 실행
+  View => Command Palette(ctrl + shift + p)
+  => settings로 검색
+  => User Settings(JSON) 선택
+
+
+6. 기본 shell 변경
+  View -> Terminal
+    1. Terminal 우측의 + 아이콘 옆에 밑 화살표 클릭
+    2. Select Default Profile 선택
+    3. 활성화되는 창에서 "Command Prompt 선택"
+    4. Terminal + 버튼 클릭해서 새로운 Terminal을 Open (cmd로 열려야 한다)
+      powershell 창은 모두 닫는다(쓰레기통 클릭)
+
+
+7. VSCode plugin
+  ES7 React/Redux/GraphQL/React-Native snippets
+  Live Server
+
+  ESLint    
+    => JavaScript 실시간 에러 체크 (여기서는 안함)
+  Prettier  
+    => 문서 포멧 설정. 설정에 Prettier 설정이 추가된다.
+    => Prettier설정에서 몇가지 변경 (settings.json 참조)
+
+  Korean Language Pack for Visual Studio Code
+    => ctrl + shift + p에서 language로 검색 
+    => 표시 언어 구성(Confiure Display Language) 선택
+    
+  Material Icon Theme
+  GitHub Theme
+  Auto Rename Tag
