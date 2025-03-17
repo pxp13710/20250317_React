@@ -1,23 +1,21 @@
+// 연습은 AppTest.js에 정의
 import logo from './logo.svg';
-import './App.css';
+import capetown from './assets/images/capetown.jpg'
 
+// JSX의 태그의 속성은 JavaScript 속성을 따른다
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="m-3">
+      <h1>Chap03 JSX</h1>
+      <div className="mb-3">
+        This is Content!!!
+      </div>
+
+      <div className="mb-3">
+        <img src={logo} width="80" alt="logo" />
+        <img src={capetown} width="80" alt="capetown" />
+        <img src="images/machu.jpg" width="80" alt="machu" />
+      </div>
     </div>
   );
 }
