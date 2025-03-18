@@ -13,7 +13,8 @@ function A03Event() {
   });
 
   const sendData = (evt) => {
-
+    evt.preventDefault(); // DOM 요소가 가진 기본 자바스크립트를 취소(실행 안함)
+    console.log(data);
   };
 
   return (
