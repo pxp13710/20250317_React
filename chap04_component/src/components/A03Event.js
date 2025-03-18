@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
 function A03Event() {
+  const [show, setShow] = useState(false);
+
   // JavaScript와 동일한 방식으로 값 취득. React가 해 주는 기능은 없음
   // react-hook-form 라이브러리를 주로 이용
   const [data, setData] = useState({
@@ -16,7 +18,15 @@ function A03Event() {
 
   const sendData = (evt) => {
     evt.preventDefault(); // DOM 요소가 가진 기본 자바스크립트를 취소(실행 안함)
-    console.log(data);
+    // console.log(data);
+
+    // JavaScript 객체 => JSON 객체로 변경
+    const jsonData = JSON.stringify(data); // 직렬화 후 서버에 전송
+    console.log(jsonData);
+
+    // JSON 데이터 => JavaScript 객체로 변경
+    const jsData = JSON.parse(jsonData); // 서버에서 받은 값(JSON 데이터)
+    console.log(jsData)
   };
 
   const changeString = (evt) => {
@@ -25,6 +35,9 @@ function A03Event() {
     if (evt.target.value.trim().length >= 2) {
       const newData = { ...data, [evt.target.name]: evt.target.value };
       setData(newData);
+      setShow(false)
+    } else {
+      setShow(true)
     }
   }
   const changeNumber = (evt) => {
@@ -37,6 +50,28 @@ function A03Event() {
     const newData = { ...data, [evt.target.name]: !data[evt.target.name] }; // on
     setData(newData);
   }
+  const changeCheckBox = (evt) => {
+    const value = evt.target.value;
+    if (!data[evt.target.name].includes(value)) {
+      const newArr = [...data[evt.target.name], value];
+      const newData = { ...data, [evt.target.name]: newArr };
+      setData(newData);
+    } else {
+      const newArr = data[evt.target.name].filter(item => item !== value);
+      const newData = { ...data, [evt.target.name]: newArr };
+      setData(newData);
+    }
+  }
+  const changeMultiSelect = (evt) => {
+    const elem = evt.target.selectedOptions; // 유사배열
+    // console.log(elem)
+    const elemArr = Array.from(elem); // 배열
+    // console.log(elemArr);
+
+    const newArr = elemArr.map(elem => elem.value); // 선택된 값만 선택된 새로운 배열
+    const newData = { ...data, four: newArr };
+    setData(newData);
+  }
 
   return (
     <div className="mb-5">
@@ -44,6 +79,7 @@ function A03Event() {
 
       <form>
         <div className="mb-3">
+          {show && <div>값이 입력되지 않았습니다</div>}
           <label htmlFor="name" className="form-label">Name: {data.name}</label>
           <input type="text" id="name" name="name" className="form-control"
             onChange={changeString} />
@@ -90,17 +126,20 @@ function A03Event() {
         </div>
 
         <div className="mb-3">
-          CheckBox: {data.language}<br />
+          CheckBox: {data.language.join(' - ')}<br />
           <div className="form-check">
-            <input type="checkbox" name="language" value="Angular" id="angular" className="form-check-input" />
+            <input type="checkbox" name="language" value="Angular" id="angular" className="form-check-input"
+              defaultChecked={data.language.includes('Angular')} onChange={changeCheckBox} />
             <label htmlFor="angular" className="form-check-label">앵귤러</label>
           </div>
           <div className="form-check">
-            <input type="checkbox" name="language" value="React" id="react" className="form-check-input" />
+            <input type="checkbox" name="language" value="React" id="react" className="form-check-input"
+              defaultChecked={data.language.includes('React')} onChange={changeCheckBox} />
             <label htmlFor="react" className="form-check-label">리엑트</label>
           </div>
           <div className="form-check">
-            <input type="checkbox" name="language" value="Vue" id="vue" className="form-check-input" />
+            <input type="checkbox" name="language" value="Vue" id="vue" className="form-check-input"
+              defaultChecked={data.language.includes('Vue')} onChange={changeCheckBox} />
             <label htmlFor="vue" className="form-check-label">뷰</label>
           </div>
         </div>
@@ -121,7 +160,8 @@ function A03Event() {
 
         <div className="mb-3">
           SelectBox Multi: {data.four.join(', ')}<br />
-          <select name="four" multiple size="5" className="form-control mb-2">
+          <select name="four" multiple size="5" className="form-control mb-2"
+            onChange={changeMultiSelect}>
             <option>한화</option>
             <option>NC</option>
             <option>두산</option>
