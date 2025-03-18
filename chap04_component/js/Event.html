@@ -29,6 +29,7 @@
         return undefined;
       };
       document.getElementById('btn02').addEventListener('click', btn02Event);
+      // <button name="button 02" onClick={btn02Event}>Btn 02</button>
 
       // 이벤트 핸들러에는 묵시적으로 event 객체가 전달된다
       const btn03Event = function (evt) {
@@ -36,14 +37,16 @@
         return undefined;
       };
       document.getElementById('btn03').addEventListener('click', btn03Event);
+      // <button name="button 03" onClick={() => btn03Event()}>Btn 03</button>
 
       const btn04Event = function (evt, color) {
         evt.target.style.backgroundColor = color;
         return undefined;
       };
-      document.getElementById('btn04').addEventListener('click', function (evt) {
-        btn04Event(evt, 'orange');
-      });
+      document
+        .getElementById('btn04')
+        .addEventListener('click', (evt) => btn04Event(evt, 'orange'));
+      // <button name="button 03" onClick={(evt) => btn04Event(evt, 'orange')}>Btn 03</button>
     </script>
   </body>
 </html>
