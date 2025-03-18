@@ -1,9 +1,16 @@
 import React, { useState } from 'react'
 
+// Vite로 작성한 프로젝트는 설치해야 한다
+// npm i prop-types
+import CheckTypes from 'prop-types'
+
 // function A02Props({today, btnName}) {
 function A02Props(props) {
   // console.log(props);
-  const { today = '', btnName = 'ADD', name = 'Unknown', changeName = () => { } } = props;
+  const {
+    today = '', btnName = 'ADD', name = 'Unknown', changeName = () => { },
+    age = 0, address = 'Busan', check = true
+  } = props;
   const [num, setNumber] = useState(10);
 
   const changeNumber = () => setNumber(num + 1);
@@ -29,6 +36,9 @@ function A02Props(props) {
         Today: {getToday()}<br />
         Number(state): {num}<br />
         Name: {name}<br />
+        Age: {age + 1}<br />
+        Address: {address}<br />
+        Check: {check ? '동의' : '동의 안함'}<br />
       </div>
 
       <div className="mb-3">
@@ -39,5 +49,17 @@ function A02Props(props) {
     </div>
   )
 }
+
+A02Props.propTypes = {
+  today: CheckTypes.number.isRequired,
+  btnName: CheckTypes.number,
+}
+
+// 사용하지 않음(deprecated)
+/*
+  A02Props.defaultProps = {
+    today: 'date'
+  }
+*/
 
 export default A02Props

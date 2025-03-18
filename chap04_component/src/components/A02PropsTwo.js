@@ -19,6 +19,10 @@ function A02PropsTwo(props) {
         <button onClick={changeName}>Name</button>
         <button onClick={changeNumber}>Num</button>
       </div>
+
+      <div>
+        {props.children}
+      </div>
     </div>
   )
 }

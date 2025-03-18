@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html lang="">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div>
-    <h1>JavaScript Event</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1>JavaScript Event</h1>
 
-    <button name="button 01">Btn 01</button>
-    <button name="button 02">Btn 02</button>
-    <button name="button 03" id="btn03">Btn 03</button>
-    <button name="button 04" id="btn04">Btn 04</button>
-  </div>
+      <button name="button 01" id="btn01">Btn 01</button>
+      <button name="button 02" id="btn02">Btn 02</button>
+      <button name="button 03" id="btn03">Btn 03</button>
+      <button name="button 04" id="btn04">Btn 04</button>
+    </div>
 
-  <script type="text/javascript">
-    
-  </script>
-</body>
+    <script type="text/javascript">
+      document.getElementById('btn01').addEventListener('click', function (evt, x) {
+        // console.log(evt);
+        // console.log(evt.target);
+        evt.target.style.backgroundColor = 'orange';
+        console.log(x);
+      });
+
+      const btn02Event = function () {
+        document.getElementById('btn02').style.backgroundColor = 'green';
+        return undefined;
+      };
+      document.getElementById('btn02').addEventListener('click', btn02Event);
+
+      // 이벤트 핸들러에는 묵시적으로 event 객체가 전달된다
+      const btn03Event = function (evt) {
+        evt.target.style.backgroundColor = 'gray';
+        return undefined;
+      };
+      document.getElementById('btn03').addEventListener('click', btn03Event);
+
+      const btn04Event = function (evt, color) {
+        evt.target.style.backgroundColor = color;
+        return undefined;
+      };
+      document.getElementById('btn04').addEventListener('click', function (evt) {
+        btn04Event(evt, 'orange');
+      });
+    </script>
+  </body>
 </html>
