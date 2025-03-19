@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 function A08Immer() {
   const [person, setPerson] = useState({
@@ -12,6 +12,59 @@ function A08Immer() {
       },
     },
   });
+
+  const changeName = useCallback((x) => {
+    // const newData = { ...person, name: x };
+    // setPerson(newData);
+
+    setPerson((data) => { // data => person을 의미
+      return { ...data, name: x };
+    });
+  }, []);
+  const changeAddress = useCallback((x) => {
+    setPerson((data) => { // data => person을 의미
+      const newData = {
+        ...data, // ...person
+        info: {
+          ...data.info, // ...person 내부의 info를 새롭게 생성
+          address: x,
+        }
+      }
+      return newData
+    });
+  }, []);
+  const changeOne = useCallback(() => {
+    setPerson((data) => { // data => person을 의미
+      const newData = {
+        ...data,
+        info: {
+          ...data.info,
+          etc: {
+            ...data.info.etc,
+            one: '복잡하기도 하다...'
+          }
+        }
+      }
+      return newData
+    });
+  }, []);
+  const addArray = useCallback(() => {
+    setPerson((data) => { // data => person을 의미
+      const random = Math.ceil(Math.random() * 100);
+      const newArr = data.info.arr.concat(random);
+
+      const newData = {
+        ...data,
+        info: {
+          ...data.info,
+          arr: newArr
+        }
+      }
+      return newData
+    });
+  }, []);
+
+
 
   return (
     <div className="mb-5">
@@ -34,10 +87,10 @@ function A08Immer() {
       </div>
 
       <div className="mb-3">
-        <button>Name</button>
-        <button>Address</button>
-        <button>One</button>
-        <button>ADD</button>
+        <button onClick={() => changeName('홍길동')}>Name</button>
+        <button onClick={() => changeAddress('서울')}>Address</button>
+        <button onClick={changeOne}>One</button>
+        <button onClick={addArray}>ADD</button>
         <br />
 
         <button>Name</button>
