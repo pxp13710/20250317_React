@@ -2,6 +2,9 @@ import React, { useCallback, useState } from 'react'
 // npm i reactstrap
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Alert } from 'reactstrap'
 
+// npm i react-icons
+import { Md6FtApart } from "react-icons/md";
+
 function A05ReactStrip() {
   const [open, setOpen] = useState('1');
   const toggle = useCallback((id) => {
@@ -11,7 +14,10 @@ function A05ReactStrip() {
 
   return (
     <div>
-      <h3>A05ReactStrip</h3>
+      <h3>
+        <Md6FtApart style={{ color: 'orange', marginRight: '10px' }} />
+        A05ReactStrip
+      </h3>
 
       <Accordion open={open} toggle={toggle}>
         <AccordionItem>
