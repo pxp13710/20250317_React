@@ -1,5 +1,9 @@
 import React, { useCallback, useState } from "react";
 
+// npm i immer
+import { produce } from 'immer' // 10.X
+// import produce from 'immer'  // 9.X
+
 function A08Immer() {
   const [person, setPerson] = useState({
     name: "",
@@ -65,6 +69,57 @@ function A08Immer() {
   }, []);
 
 
+  const changeNameImmer = useCallback((x) => {
+    /*
+    const newData = produce(person, (draft) => {
+      draft.name = x;
+    });
+    setPerson(newData);
+    */
+    setPerson((data) => { // data => person
+      const newData = produce(data, (draft) => {
+        draft.name = x;
+      });
+      return newData;
+    })
+  }, []);
+  const changeAddressImmer = useCallback((x) => {
+    setPerson((data) => { // data => person
+      return produce(data, (draft) => {
+        draft.info.address = x;
+      });
+    })
+  }, []);
+  const changeOneImmer = useCallback(() => {
+    setPerson((data) => { // data => person
+      return produce(data, (draft) => {
+        draft.info.etc.one = '간단하다...';
+      });
+    })
+  }, []);
+  const addArrayImmer = useCallback(() => {
+    setPerson((data) => { // data => person
+      const random = Math.ceil(Math.random() * 100);
+      return produce(data, (draft) => {
+        draft.info.arr.push(random);
+      });
+    })
+  }, []);
+  const updateArrayImmer = useCallback((idx, value) => {
+    setPerson((data) => { // data => person
+      return produce(data, (draft) => {
+        draft.info.arr[idx] = value;
+      });
+    })
+  }, []);
+  const deleteArrayImmer = useCallback((idx) => {
+    setPerson((data) => { // data => person
+      return produce(data, (draft) => {
+        draft.info.arr.splice(idx, 1);
+      });
+    })
+  }, []);
+
 
   return (
     <div className="mb-5">
@@ -93,13 +148,13 @@ function A08Immer() {
         <button onClick={addArray}>ADD</button>
         <br />
 
-        <button>Name</button>
-        <button>Address</button>
-        <button>One</button>
+        <button onClick={() => changeNameImmer('놀부')}>Name</button>
+        <button onClick={() => changeAddressImmer('부산')}>Address</button>
+        <button onClick={changeOneImmer}>One</button>
 
-        <button>ADD</button>
-        <button>UPDATE</button>
-        <button>DELETE</button>
+        <button onClick={addArrayImmer}>ADD</button>
+        <button onClick={() => updateArrayImmer(1, 2000)}>UPDATE</button>
+        <button onClick={() => deleteArrayImmer(1)}>DELETE</button>
       </div>
     </div>
   );
