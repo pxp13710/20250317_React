@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useRef, useState } from "react";
 import A04Table from './A04Table'
 
 const baseArray = ["NC", "두산", "엘지", "KT", "키움"];
+let id = 4;
 
 function A04CreateDOM() {
+  // useState와 동일. useState와 달리 값이 변경되도 화면 갱신(리렌더링)은 하지 않는다
+  const count = useRef(4);
+  // console.log(count)
+
   const [baseObject, setBaseObject] = useState([
     { id: 1, team: "NC", value: "NC" },
     { id: 2, team: "두산", value: "Doosan" },
@@ -21,7 +27,8 @@ function A04CreateDOM() {
     setData({ ...data, [evt.target.name]: evt.target.value });
   }
   const addTeam = () => {
-    setBaseObject(baseObject.concat({ id: 4, team: "삼성", value: "Samsung" }));
+    // setBaseObject(baseObject.concat({ id: id++, team: "삼성", value: "Samsung" }));
+    setBaseObject(baseObject.concat({ id: count.current++, team: "삼성", value: "Samsung" }));
   }
   const showHide = () => {
     setData({ ...data, isChecked: !data.isChecked });
@@ -87,15 +94,16 @@ function A04CreateDOM() {
         <button className="btn btn-outline-primary btn-sm" onClick={addTeam}>ADD TEAM</button>
       </div>
 
-      <div className="input-group mb-3">
-        <input type="text" className="form-control"
-          value={data.team} onChange={changeTeam} />
-        <button className="btn btn-outline-primary btn-sm"
-          onClick={addBaseArray}>ADD</button>
-      </div>
+      {data.isChecked &&
+        <div className="input-group mb-3">
+          <input type="text" className="form-control" value={data.team} onChange={changeTeam} />
+          <button className="btn btn-outline-primary btn-sm"
+            onClick={addBaseArray}>ADD</button>
+        </div>
+      }
 
       <button className="btn btn-outline-primary btn-sm" onClick={showHide}>
-        HIDE
+        {data.isChecked ? 'HIDE' : 'SHOW'}
       </button>
     </div>
   );
