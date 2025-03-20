@@ -3,7 +3,7 @@ import TodoListItem from './TodoListItem'
 
 // props는 읽기 전용 속성이다
 function Todolist(props) {
-  const { todoList = [], updateTodo = () => { } } = props;
+  const { todoList = [], updateTodo = () => { }, deleteTodo = () => { } } = props;
 
   return (
     <div>
@@ -19,7 +19,7 @@ function Todolist(props) {
         <tbody>
           {/* todo => {id: 1, text: '첫번째 할 일', done: false } */}
           {todoList.map(todo =>
-            <TodoListItem key={todo.id} todo={todo} updateTodo={updateTodo} />)}
+            <TodoListItem key={todo.id} todo={todo} updateTodo={updateTodo} deleteTodo={deleteTodo} />)}
 
           {/* {todoList.map(todo => (
             <tr key={todo.id}>
