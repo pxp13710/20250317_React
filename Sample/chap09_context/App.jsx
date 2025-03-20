@@ -1,6 +1,6 @@
-import ColorBox from './components/ColorBox'
-import SelectColor from './components/SelectColor'
-import TodoTemplate from './components/TodoTemplate'
+import ColorBox from './components/ColorBox.jsx'
+import SelectColor from './components/SelectColor.jsx'
+import TodoTemplate from './components/TodoTemplate.jsx'
 
 function App() {
   return (

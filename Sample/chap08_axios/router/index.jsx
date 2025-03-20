@@ -1,14 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom'
 
-import App from './../App'
-import Axios from './../pages/Axios'
-import Home from './../pages/Home'
-import ContactList from './../pages/ContactList'
-import Contact from './../pages/Contact'
-import AddContact from './../pages/AddContact'
-import UpdateContact from './../pages/UpdateContact'
-import ErrorElem from './../pages/ErrorElem'
-import NotFound from './../pages/NotFound'
+import App from './../App.jsx'
+import Axios from './../pages/Axios.jsx'
+import Home from './../pages/Home.jsx'
+import ContactList from './../pages/ContactList.jsx'
+import Contact from './../pages/Contact.jsx'
+import AddContact from './../pages/AddContact.jsx'
+import UpdateContact from './../pages/UpdateContact.jsx'
+import ErrorElem from './../pages/ErrorElem.jsx'
+import NotFound from './../pages/NotFound.jsx'
 
 const routes = createBrowserRouter([
   {

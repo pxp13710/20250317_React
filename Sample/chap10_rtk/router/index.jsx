@@ -1,15 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom'
 
-import App from './../App'
-import Count from './../pages/Count'
-import TodoList from './../pages/TodoList'
+import App from './../App.jsx'
+import Count from './../pages/Count.jsx'
+import TodoList from './../pages/TodoList.jsx'
 
-import ContactList from './../pages/ContactList'
-import Contact from './../pages/Contact'
-import AddContact from './../pages/AddContact'
-import UpdateContact from './../pages/UpdateContact'
-import ErrorElem from './../pages/ErrorElem'
-import NotFound from './../pages/NotFound'
+import ContactList from './../pages/ContactList.jsx'
+import Contact from './../pages/Contact.jsx'
+import AddContact from './../pages/AddContact.jsx'
+import UpdateContact from './../pages/UpdateContact.jsx'
+import ErrorElem from './../pages/ErrorElem.jsx'
+import NotFound from './../pages/NotFound.jsx'
 
 const routes = createBrowserRouter([
   {
