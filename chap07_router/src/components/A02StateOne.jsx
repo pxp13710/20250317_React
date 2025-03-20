@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function StateComp() {
+  // 주소줄 관련 정보
+  const location = useLocation();
+  console.log(location.state?.name)
+
   const [name, setName] = useState("NolBu");
   const [age, setAge] = useState(20);
 
@@ -18,7 +23,7 @@ function StateComp() {
 
       <div className="mb-3">
         <button onClick={changeName}>Name</button>
-        <button onClick={(evt) => changeAge(100)}>Age</button>
+        <button onClick={() => changeAge(100)}>Age</button>
       </div>
     </div>
   );

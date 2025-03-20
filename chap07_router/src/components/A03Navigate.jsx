@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 function NavigateComp() {
+  const navigate = useNavigate();
+  const goURL = useCallback((url, opt) => {
+    navigate(url, {
+      replace: opt.replace ?? true, // history를 남기지 않고 이동
+      relative: opt.relative ?? 'route', // 상대패스의 경우 상위 컴포넌트(path), root로 이동(route)로 이동할지 여부
+      preventScrollReset: opt.prevent ?? true, // 페이지 이동후 스크롤을 고정할 것인가(true), 초기화(false)
+      state: opt.state
+    })
+  }, [navigate])
+
   return (
     <div className="mb-3">
       <h3>NAVIGATE</h3>
 
       <div className="mb-3">
-        <button>BACK</button>
-        <button>FORWARD</button>
-        <button>HOME</button>
-        <button>PARAMETER</button>
+        <button onClick={() => navigate(-1)}>BACK</button>
+        <button onClick={() => navigate(1)}>FORWARD</button>
+        <button onClick={() => navigate('/')}>HOME</button>
+        <button onClick={() => goURL('/state', { state: { name: '홍길동', age: 20 } })}>PARAMETER</button>
       </div>
     </div>
   );

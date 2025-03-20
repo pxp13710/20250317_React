@@ -1,7 +1,7 @@
 import React from 'react'
 
 function PropsComp(props) {
-  const { name, age } = props;
+  const { name, age, user } = props;
 
   return (
     <div className="mb-3">
@@ -10,6 +10,7 @@ function PropsComp(props) {
       <div className="mb-3">
         Name: {name}<br />
         Age: {age + 100}<br />
+        User: {user.name} / {user.age}
       </div>
     </div>
   )

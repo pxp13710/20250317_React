@@ -1,10 +1,11 @@
 import React from 'react'
+import { Navigate } from 'react-router-dom';
 
 function NavigateTag() {
   const isChecked = false;
 
   if (!isChecked) {
-
+    return <Navigate to="/" replace={true} />
   }
 
   return (
