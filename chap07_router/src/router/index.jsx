@@ -82,7 +82,7 @@ const routes = createBrowserRouter([
       // 부모인 A08ChildComp 내부에는 자식 컴포넌트가 표시될 위치를 <Outlet>으로 지정해야 한다
       {
         path: '/child', element: <A08ChildComp />, children: [
-          { path: '', element: <A08ChildOne /> },
+          { index: true, element: <A08ChildOne /> },
           { path: '/child/two', element: <A08ChildTwo /> },
           { path: 'three', element: <h3>THREE</h3> },
         ]
