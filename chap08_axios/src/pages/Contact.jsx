@@ -38,7 +38,8 @@ function GetContact() {
     getContact();
   }, [getContact])
 
-  if (!no) return <Navigate to="/contactList" replace={true} />
+  // loading과 error 처리 추가
+  if (Number(no) === 101) return <Navigate to="/contactList" replace={true} />
   return (
     <div>
       <h3>Get Contact</h3>
