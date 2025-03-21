@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // npm i react-router-dom react-spinners sweetalert2
 import { useSelector } from 'react-redux';
 import { Outlet, NavLink, useNavigation } from 'react-router-dom'
@@ -11,7 +12,7 @@ function App() {
 
   return (
     <div className="m-3">
-      <h1>Chap06 TodoList / {count}</h1>
+      <h1>Chap06 TodoList / {__VERSION__} / {count}</h1>
 
       <div className="mb-3">
         <NavLink to="/" className={isActive}>HOME</NavLink> | {' '}

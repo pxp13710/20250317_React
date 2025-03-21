@@ -31,6 +31,7 @@ export default defineConfig({
       '@pages': '/src/pages',
       '@router': '/src/router',
       '@assets': '/src/assets',
+      '@stores': '/src/stores',
     },
     extensions: ['js', '.jsx', 'ts', 'tsx']
   },
