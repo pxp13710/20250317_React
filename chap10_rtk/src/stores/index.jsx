@@ -13,6 +13,8 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => {
     // serializableCheck: true => store에 넘어오는 값이 직렬화된 값이니?
     // evt.target 이런형태로 값이 넘어오면 직렬화가 안된 상태 => 에러 발생
+    // true => 허용 안함. evt.target 이런형태로 값 사용 불가
+    // false => 허용
     return getDefaultMiddleware({ serializableCheck: false })
   }
 })

@@ -39,7 +39,11 @@ const contactStore = createSlice({
     error: null,
   },
   reducers: {
-
+    // action => evt.target
+    changeContactAction: (state, action) => {
+      // console.log(action)
+      state.contact[action.payload.name] = action.payload.value;
+    }
   },
   extraReducers: (builder) => {
     // 비동기 Action 1개에 대해 3개의 상태값을 값을 갖늗다
@@ -92,7 +96,23 @@ const contactStore = createSlice({
     builder.addCase(deleteContactAction.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error;
+    });
+
+    // add
+    builder.addCase(addContactAction.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+      state.status = { status: '', message: '' };
+    });
+    builder.addCase(addContactAction.fulfilled, (state, action) => {
+      state.loading = false;
+      state.status = action.payload; // { status: 'success', message... }
+    });
+    builder.addCase(addContactAction.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error;
     })
   }
 })
 export default contactStore;
+export const { changeContactAction } = contactStore.actions;
