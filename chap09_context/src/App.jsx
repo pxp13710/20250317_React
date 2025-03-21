@@ -7,6 +7,7 @@ import TodoTemplate from './components/TodoTemplate.jsx'
 // Consumer => 정보 수신(Hook으로 사용)
 import ColorContext from './context/ColorContext.jsx'
 import { SelectContextProvider } from './context/SelectContext.jsx'
+import { TodoContextProvider } from './context/TodoContext.jsx'
 
 function App() {
   const [color, setColor] = useState('green');
@@ -28,7 +29,9 @@ function App() {
 
       <hr />
 
-      <TodoTemplate></TodoTemplate>
+      <TodoContextProvider>
+        <TodoTemplate></TodoTemplate>
+      </TodoContextProvider>
     </div>
   );
 }

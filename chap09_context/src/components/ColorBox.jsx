@@ -24,7 +24,7 @@ function ColorBox() {
 
         <div>
           Color: {state.color} <br />
-          <button onClick={() => action.setColor('RED')}>COLOR</button>
+          <button onClick={() => action.setColor('검정색')}>COLOR</button>
         </div>
       </div>
     </div>

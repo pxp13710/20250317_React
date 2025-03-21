@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import ColorContext from './../context/ColorContext.jsx'
+import { SelectContext } from './../context/SelectContext.jsx'
 
 function SelectColor() {
   const { color, setColor, contextName } = useContext(ColorContext);
+  const { state, action } = useContext(SelectContext);
 
   const colors = ['red', 'orange', 'green', 'blue', 'yellow'];
   const style = { width: '50px', height: '50px', background: 'gray', cursor: 'pointer' };
@@ -19,7 +21,13 @@ function SelectColor() {
       </div>
 
       <div style={{ display: 'flex' }}>
-        {colors.map(color => <div key={color} style={style}>{color}</div>)}
+        <div>
+          Color: {state.color}<br />
+        </div>
+
+        {colors.map(color =>
+          <div key={color} style={{ ...style, background: color }}
+            onClick={() => action.setColor(color)}>{color}</div>)}
       </div>
     </div>
   )
