@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import countStore from './countStore.jsx'
 import todoStore from './todoStore.jsx'
-import contactStore from './contactStore.js'
+import contactStore from './contactStore.jsx'
 
 const store = configureStore({
   // 값을 병합
